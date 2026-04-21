@@ -1,0 +1,184 @@
+:root {
+  --primary: hsl(215, 80%, 25%);          
+  --secondary: hsl(43, 96%, 56%);          
+  --secondary-foreground: hsl(215, 50%, 15%);
+  --nav-bg: hsl(215, 50%, 15%);
+  --nav-foreground: hsl(0, 0%, 100%);
+  --hero-overlay: hsla(215, 50%, 10%, 0.7);
+}
+
+/* ========== Reset ========== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--nav-bg);
+  color: var(--nav-foreground);
+  -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ========== Marca ========== */
+.brand-ren { color: hsl(215, 90%, 55%); font-weight: 900; }
+.brand-tau { color: var(--secondary); font-weight: 900; }
+
+/* ========== Navbar ========== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: hsla(215, 50%, 15%, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.nav-container {
+  position: relative;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 1rem;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-left { display: flex; align-items: center; gap: 0.25rem; }
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--nav-foreground);
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: hsla(0, 0%, 100%, 0.1); }
+.nav-btn-label { display: none; }
+@media (min-width: 640px) { .nav-btn-label { display: inline; } }
+
+.nav-logo {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+}
+
+.login-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+  background: transparent;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+.login-btn:hover { background: var(--secondary); color: var(--secondary-foreground); }
+
+/* ========== Hero ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel { position: absolute; inset: 0; }
+.slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active { opacity: 1; }
+
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    hsla(215, 50%, 15%, 0.8),
+    hsla(215, 50%, 15%, 0.5),
+    hsla(215, 50%, 15%, 0.8));
+}
+
+.hero-content {
+  position: relative; z-index: 10;
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.hero-logo { margin-bottom: 0.5rem; }
+.hero-logo h2 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 900; letter-spacing: -0.02em;
+}
+.tagline {
+  color: hsla(0, 0%, 100%, 0.6);
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  font-weight: 300;
+}
+
+.headline {
+  font-size: clamp(1.5rem, 5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  max-width: 56rem;
+  color: var(--nav-foreground);
+}
+.accent-italic {
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: clamp(0.875rem, 1.4vw, 1.125rem);
+  max-width: 42rem;
+  font-weight: 300;
+}
+
+/* ========== CTA ========== */
+.cta-btn {
+  margin-top: 1.5rem;
+  padding: 1rem 2.5rem;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px hsla(43, 96%, 56%, 0.3);
+  transition: transform 0.3s;
+}
+.cta-btn:hover { transform: scale(1.05); }
+
+/* ========== Indicadores ========== */
+.indicators {
+  position: absolute; bottom: 2rem;
+  display: flex; gap: 0.75rem;
+}
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 9999px;
+  background: hsla(0, 0%, 100%, 0.4);
+  transition: all 0.3s;
+}
+.dot:hover { background: hsla(0, 0%, 100%, 0.6); }
+.dot.active {
+  background: var(--secondary);
+  width: 32px;
+}
+
+/* ========== Animaciones ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px hsla(43, 96%, 56%, 0.4); }
+  50%      { box-shadow: 0 0 40px hsla(43, 96%, 56%, 0.7); }
+}
+
+.fade-in-up         { animation: fadeInUp 1s ease-out forwards; }
+.fade-in-up-delay   { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
+.fade-in-up-delay-2 { animation: fadeInUp 1s ease-out 0.6s forwards; opacity: 0; }
+.pulse-glow         { animation: pulseGlow 2s ease-in-out infinite; }

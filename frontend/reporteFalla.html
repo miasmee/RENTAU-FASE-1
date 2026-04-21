@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar Falla - RENTAU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-rentau-navy {
+            background-color: #002D5B;
+        }
+
+        .text-rentau-navy {
+            color: #002D5B;
+        }
+
+        .bg-rentau-gold {
+            background-color: #FFB800;
+        }
+
+        .text-rentau-gold {
+            color: #FFB800;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #FFB800 !important;
+            box-shadow: 0 0 0 4px rgba(255, 184, 0, 0.1);
+        }
+
+        .status-badge-pending {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .status-badge-process {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .status-badge-resolved {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="p-4 md:p-6 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <div class="flex items-center gap-4">
+                <button onclick="window.location.href='inicioinquilino.html'"
+                    class="text-rentau-navy hover:text-rentau-gold transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xl"></i>
+                </button>
+                <h1 class="text-xl md:text-2xl font-bold text-rentau-navy tracking-tight">
+                    Reportar <span class="text-rentau-gold">Falla</span>
+                </h1>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 pl-6 border-l border-slate-200">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold text-rentau-navy leading-tight">Alexandra Sánchez</p>
+                        <p class="text-[11px] text-slate-400 font-medium">ID: 2026-008</p>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-rentau-navy text-white flex items-center justify-center font-bold border-2 border-rentau-gold shadow-sm">
+                        AS
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl w-full mx-auto p-6 lg:py-12 space-y-8">
+
+        <div class="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+            <div class="p-8 md:p-12">
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-rentau-navy">Detalles del Incidente</h3>
+                    <p class="text-sm text-slate-400 mt-1">Describe el problema para que nuestro equipo técnico pueda
+                        asistirte.</p>
+                </div>
+
+                <form action="procesar_reporte.php" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Categoría</label>
+                            <div class="relative">
+                                <select name="categoria"
+                                    class="w-full bg-slate-50 border border-slate-100 text-slate-700 text-sm rounded-2xl p-4 appearance-none cursor-pointer">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="electrico">Problema Eléctrico</option>
+                                    <option value="fontaneria">Fontanería / Agua</option>
+                                    <option value="muebles">Mobiliario Dañado</option>
+                                    <option value="internet">Conexión a Internet</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <i
+                                    class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none text-xs"></i>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Ubicación
+                                exacta</label>
+                            <input type="text" name="ubicacion" placeholder="Ej: Baño, Habitación 4..."
+                                class="w-full bg-slate-50 border border-slate-100 text-sm rounded-2xl p-4 placeholder:text-slate-300">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label
+                            class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Descripción</label>
+                        <textarea name="descripcion" rows="3" placeholder="Describe qué sucede..."
+                            class="w-full bg-slate-50 border border-slate-100 text-sm rounded-2xl p-4 placeholder:text-slate-300 resize-none"></textarea>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label
+                            class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Evidencia</label>
+                        <div
+                            class="border-2 border-dashed border-slate-100 rounded-[2rem] p-6 flex flex-col items-center justify-center bg-slate-50/50 hover:bg-slate-50 transition-colors cursor-pointer group">
+                            <input type="file" name="foto" class="hidden" id="file-upload">
+                            <label for="file-upload" class="flex flex-col items-center cursor-pointer text-center">
+                                <div
+                                    class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-300 group-hover:text-rentau-gold transition-colors mb-2">
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-slate-400">Subir foto o video</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-rentau-navy text-white font-bold py-5 rounded-[1.5rem] hover:bg-rentau-gold hover:text-rentau-navy transition-all shadow-lg text-xs uppercase tracking-[0.2em]">
+                        Enviar Reporte Técnico
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-blue-50/50 p-6 rounded-[2rem] border border-blue-100/50">
+            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-rentau-navy shadow-sm">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <p class="text-xs text-rentau-navy">
+                <b>Nota:</b> Los reportes son atendidos en un plazo de <b>24 a 48 horas</b>.
+            </p>
+        </div>
+
+        <section class="space-y-4">
+            <h3 class="text-sm font-bold text-rentau-navy uppercase tracking-widest ml-2">Seguimiento de mis reportes
+            </h3>
+
+            <div class="grid grid-cols-1 gap-4">
+
+                <div
+                    class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500">
+                            <i class="fa-solid fa-faucet text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Fontanería • Hab.
+                                008</p>
+                            <h4 class="text-sm font-bold text-rentau-navy">Fuga de agua en lavabo</h4>
+                            <p class="text-[10px] text-slate-400 mt-0.5">Reportado: 12 Abr, 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4">
+                        <span
+                            class="status-badge-pending px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Pendiente</span>
+                        <button class="text-slate-300 hover:text-rentau-navy transition-colors">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500">
+                            <i class="fa-solid fa-wifi text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Internet • Áreas
+                                Comunes</p>
+                            <h4 class="text-sm font-bold text-rentau-navy">Conexión inestable</h4>
+                            <p class="text-[10px] text-slate-400 mt-0.5">Reportado: 10 Abr, 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4">
+                        <span
+                            class="status-badge-process px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider">En
+                            Proceso</span>
+                        <button class="text-slate-300 hover:text-rentau-navy transition-colors">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 opacity-70">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Eléctrico •
+                                Pasillo 2</p>
+                            <h4 class="text-sm font-bold text-rentau-navy">Foco fundido</h4>
+                            <p class="text-[10px] text-slate-400 mt-0.5">Resuelto: 05 Abr, 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4">
+                        <span
+                            class="status-badge-resolved px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Resuelto</span>
+                        <button class="text-slate-300 hover:text-rentau-navy transition-colors">
+                            <i class="fa-solid fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-8 text-center text-slate-300 text-[10px] tracking-widest uppercase font-medium mt-auto">
+        &copy; 2026 RENTAU - Gestión Residencial
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENTAU - Inicio de Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-rentau-navy {
+            background-color: #002D5B;
+        }
+
+        .text-rentau-navy {
+            color: #002D5B;
+        }
+
+        .bg-rentau-gold {
+            background-color: #FFB800;
+        }
+
+        .text-rentau-gold {
+            color: #FFB800;
+        }
+
+        .modal-overlay {
+            background: rgba(0, 45, 91, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <header class="fixed top-0 left-0 w-full p-6">
+        <a href="index.html"
+            class="inline-flex items-center justify-center w-12 h-12 bg-white rounded-2xl shadow-lg text-rentau-navy hover:text-rentau-gold transition-all border border-slate-100">
+            <i class="fa-solid fa-house text-xl"></i>
+        </a>
+    </header>
+
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-10 border border-slate-100">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold tracking-tighter text-rentau-navy">REN<span
+                    class="text-rentau-gold">TAU</span></h1>
+            <p class="text-slate-500 mt-2">Ingresa a tu residencia</p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Departamento / Usuario</label>
+                <input type="text" id="username" placeholder="Ej: 001" required
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-yellow-400 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Contraseña</label>
+                <div class="relative group">
+                    <input type="password" id="password" placeholder="••••••••" required
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-yellow-400 outline-none pr-12 transition-all">
+
+                    <button type="button" id="togglePassword"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-rentau-navy transition-colors focus:outline-none">
+                        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <a href="recuperar.html"
+                    class="text-xs font-semibold text-rentau-navy hover:text-rentau-gold transition-colors underline underline-offset-4">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            </div>
+
+            <div id="error-message" class="text-red-500 text-sm hidden text-center font-medium"></div>
+
+            <button type="submit"
+                class="w-full bg-rentau-navy text-white font-bold py-4 rounded-xl hover:bg-opacity-90 shadow-lg transition-all">
+                INICIAR SESIÓN
+            </button>
+        </form>
+    </div>
+
+
+
+    <div id="success-modal" class="fixed inset-0 z-50 items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl">
+            <div
+                class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-rentau-navy mb-2" id="welcome-title">¡Bienvenida!</h2>
+            <p class="text-slate-500 mb-8">Has iniciado sesión con éxito en el portal.</p>
+            <button id="btn-accept"
+                class="w-full bg-rentau-navy text-white font-bold py-3 rounded-xl hover:bg-opacity-90">
+                ACEPTAR
+            </button>
+        </div>
+    </div>
+
+    <div id="recovery-modal" class="fixed inset-0 z-50 items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl">
+            <h2 class="text-xl font-bold text-rentau-navy mb-4">Recuperar Acceso</h2>
+            <input type="text" id="rec-dept" placeholder="Departamento"
+                class="w-full px-4 py-3 rounded-xl border mb-3 outline-none focus:ring-2 focus:ring-yellow-400">
+            <input type="text" id="rec-code" maxlength="4" placeholder="Código (4 dígitos)"
+                class="w-full px-4 py-3 rounded-xl border mb-6 outline-none focus:ring-2 focus:ring-yellow-400 text-center font-bold">
+            <button id="btn-verify-code"
+                class="w-full bg-rentau-navy text-white font-bold py-3 rounded-xl mb-3">VERIFICAR</button>
+            <button onclick="document.getElementById('recovery-modal').classList.remove('active')"
+                class="w-full text-slate-400 text-sm font-semibold">CANCELAR</button>
+        </div>
+    </div>
+
+    <script src="./js/sesion.js"></script>
+</body>
+
+</html>

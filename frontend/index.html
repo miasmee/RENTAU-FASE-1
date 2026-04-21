@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RENTAU - Gestión Residencial</title>
+  <meta name="description"
+    content="RENTAU - Tu nuevo hogar empieza aquí. Residencia estudiantil con comodidad, seguridad y comunidad." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <label class="nav-btn" type="button" aria-label="Ubicación">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span class="nav-btn-label">Av. Tecnológico, Zacatepec, Morelos. </span>
+        </label>
+      </div>
+
+      <div class="nav-logo">
+        <span class="brand-ren">REN</span><span class="brand-tau">TAU</span>
+      </div>
+
+      <button class="login-btn" type="button" onclick="window.location.href='login.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" x2="3" y1="12" y2="12" />
+        </svg>
+        Iniciar Sesión
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO CARRUSEL -->
+  <section class="hero">
+    <div class="carousel">
+      <div class="slide active" style="background-image:url('assets/carousel-1.jpg')"></div>
+      <div class="slide" style="background-image:url('assets/carousel-2.jpg')"></div>
+      <div class="slide" style="background-image:url('assets/carousel-3.jpg')"></div>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-logo fade-in-up">
+        <h2>
+          <span class="brand-ren">REN</span><span class="brand-tau">TAU</span>
+        </h2>
+        <p class="tagline"> Residencia Estudiantil </p>
+      </div>
+
+      <h1 class="headline fade-in-up-delay">
+        TU NUEVO <span class="accent-italic">HOGAR</span><br />
+        ESTÁ AQUÍ
+      </h1>
+
+      <p class="subtitle fade-in-up-delay-2">
+        Espacios diseñados para que vivas, estudies y crezcas. Comodidad, seguridad y comunidad en un solo lugar.
+      </p>
+
+      <button class="cta-btn pulse-glow" type="button"
+        onclick="window.location.href='agendaVisita.html'">¡Visítanos!</button>
+
+      <div class="indicators">
+        <button class="dot active" data-index="0" aria-label="Imagen 1"></button>
+        <button class="dot" data-index="1" aria-label="Imagen 2"></button>
+        <button class="dot" data-index="2" aria-label="Imagen 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/carrusel.js"> </script>
+</body>
+
+</html>

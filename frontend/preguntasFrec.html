@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - RENTAU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .text-rentau-navy {
+            color: #002D5B;
+        }
+
+        .bg-rentau-navy {
+            background-color: #002D5B;
+        }
+
+        .text-rentau-gold {
+            color: #FFB800;
+        }
+
+        /* Animación del Acordeón */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            padding-bottom: 2rem;
+        }
+
+        .accordion-item.active i {
+            transform: rotate(45deg);
+            color: #FFB800;
+        }
+
+        .accordion-item {
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: #FFB800;
+            shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="p-6 bg-white border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <div class="flex items-center gap-4">
+                <a href="inicioinquilino.html"
+                    class="text-rentau-navy flex items-center hover:text-rentau-gold transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xl"></i>
+                    <span class="ml-6 text-xl font-bold tracking-tight">
+                        Preguntas <span class="text-rentau-gold">Frecuentes</span>
+                    </span>
+                </a>
+            </div>
+
+
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 pl-6 border-l border-slate-200">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold text-rentau-navy leading-tight">Alexandra Sánchez</p>
+                        <p class="text-[11px] text-slate-400 font-medium">ID: 2026-008</p>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-rentau-navy text-white flex items-center justify-center font-bold border-2 border-rentau-gold shadow-sm">
+                        AS
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto p-6 py-12 flex-grow">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-rentau-navy mb-4 text-center w-full">Preguntas Frecuentes</h2>
+            <p class="text-slate-400 max-w-lg mx-auto">Resuelve tus dudas rápidamente sobre el funcionamiento de tu
+                residencia y el sistema RENTAU.</p>
+        </div>
+
+        <div class="max-w-md mx-auto mb-10">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i
+                        class="fa-solid fa-magnifying-glass text-slate-400 group-focus-within:text-rentau-gold transition-colors"></i>
+                </div>
+                <input type="text" id="faq-search" placeholder="Buscar por palabra clave (ej. renta, mantenimiento...)"
+                    class="w-full pl-11 pr-4 py-4 bg-white border border-slate-100 rounded-2xl outline-none focus:border-rentau-gold focus:ring-4 focus:ring-rentau-gold/5 transition-all text-sm shadow-sm">
+            </div>
+        </div>
+
+        <div id="faq-accordion-container" class="space-y-4">
+        </div>
+
+        <div id="faq-accordion-container" class="space-y-4">
+            <div class="flex justify-center py-20">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-rentau-gold"></div>
+            </div>
+        </div>
+
+        <div
+            class="mt-16 bg-white border border-slate-100 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+            <div>
+                <h4 class="text-xl font-bold text-rentau-navy">¿No encontraste lo que buscabas?</h4>
+                <p class="text-slate-400 text-sm mt-1">Nuestro equipo está listo para apoyarte.</p>
+            </div>
+            <button onclick="window.location.href='reporteFalla.html'"
+                class="bg-rentau-navy text-white px-8 py-4 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-rentau-gold hover:text-rentau-navy transition-all shadow-md">
+                Contactar Soporte
+            </button>
+        </div>
+    </main>
+
+    <footer class="p-8 text-center text-slate-300 text-[10px] tracking-widest uppercase font-medium">
+        © 2026 RENTAU - Gestión Residencial
+    </footer>
+
+    <script src="js/preguntasFrec.js"></script>
+</body>
+
+</html>

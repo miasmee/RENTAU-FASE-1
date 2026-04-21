@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENTU - Panel de Usuario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-rentau-navy {
+            background-color: #002D5B;
+        }
+
+        .text-rentau-navy {
+            color: #002D5B;
+        }
+
+        .bg-rentau-gold {
+            background-color: #FFB800;
+        }
+
+        .text-rentau-gold {
+            color: #FFB800;
+        }
+
+        .module-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 45, 91, 0.1);
+            border-color: #FFB800;
+        }
+
+        .icon-box {
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover .icon-box {
+            background-color: #002D5B;
+            color: #FFB800;
+        }
+
+        #notification-dropdown {
+            display: none;
+        }
+
+        #notification-dropdown.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="p-4 md:p-6 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <h1 class="text-2xl font-bold text-rentau-navy tracking-tighter cursor-pointer"
+                onclick="window.location.reload()">
+                REN<span class="text-rentau-gold">TAU</span>
+            </h1>
+
+            <div class="flex items-center gap-6">
+                <div class="relative">
+                    <button id="notif-btn"
+                        class="relative text-slate-400 hover:text-rentau-navy transition-colors focus:outline-none">
+                        <i class="fa-solid fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                        </span>
+                    </button>
+                    <div id="notification-dropdown"
+                        class="absolute right-0 mt-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 overflow-hidden">
+                        <div class="p-4 border-b border-slate-50 bg-slate-50">
+                            <h4 class="font-bold text-rentau-navy text-[11px] uppercase tracking-widest">Avisos
+                                Recientes</h4>
+                        </div>
+                        <div class="p-4 text-center text-slate-400 text-[10px] italic">No hay mensajes nuevos.</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 pl-6 border-l border-slate-200">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold text-rentau-navy leading-tight">Alexandra Sánchez</p>
+                        <p class="text-[11px] text-slate-400 font-medium">ID: 2026-008</p>
+                    </div>
+                    <div
+                        class="w-10 h-10 rounded-full bg-rentau-navy text-white flex items-center justify-center font-bold border-2 border-rentau-gold shadow-sm">
+                        AS
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6 lg:py-16">
+        <div class="max-w-6xl w-full">
+
+            <div class="mb-14 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-rentau-navy mb-4">Panel de Control</h2>
+                <p class="text-slate-400 text-sm font-medium uppercase tracking-[0.2em]">Selecciona un módulo para
+                    gestionar tu estancia</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+                <button onclick="window.location.href='consultaAlquiler.html'"
+                    class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                    <div
+                        class="icon-box w-16 h-16 rounded-2xl bg-slate-50 text-rentau-navy flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-house-chimney-window"></i>
+                    </div>
+                    <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                        onclick="window.location.href='consultaAlquiler.html'">Consulta Alquiler</h3>
+                </button>
+
+                <button onclick="window.location.href='pagoAlquiler.html'"
+                    class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                    <div
+                        class="icon-box w-16 h-16 rounded-2xl bg-yellow-50 text-rentau-gold flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                        onclick="window.location.href='pagoAlquiler.html'">Pago Alquiler</h3>
+                </button>
+
+                <button onclick="window.location.href='consultaElectricidad.html'"
+                    class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                    <div
+                        class="icon-box w-16 h-16 rounded-2xl bg-slate-50 text-rentau-navy flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                        onclick="window.location.href='consultaElectricidad.html'">Consulta Electricidad</h3>
+                </button>
+
+                <button onclick="window.location.href='pagoElectricidad.html'"
+                    class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                    <div
+                        class="icon-box w-16 h-16 rounded-2xl bg-yellow-50 text-rentau-gold flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                        onclick="window.location.href='pagoElectricidad.html'"> Pago Electricidad</h3>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full lg:w-3/4">
+                    <button onclick="window.location.href='reporteFalla.html'"
+                        class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                        <div
+                            class="icon-box w-16 h-16 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide "
+                            onclick="window.location.href='reporteFalla.html'">Reporte Falla</h3>
+                    </button>
+
+                    <button onclick="window.location.href='contrato.html'"
+                        class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                        <div
+                            class="icon-box w-16 h-16 rounded-2xl bg-slate-50 text-slate-600 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                            onclick="window.location.href='contrato.html'">Contrato</h3>
+                    </button>
+
+                    <button onclick="window.location.href='preguntasFrec.html'"
+                        class="module-card group bg-white p-8 rounded-[2rem] border border-slate-100 flex flex-col items-center text-center gap-5 shadow-sm">
+                        <div
+                            class="icon-box w-16 h-16 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <h3 class="font-bold text-rentau-navy text-sm uppercase tracking-wide"
+                            onclick="window.location.href='preguntasFrec.html'">Preguntas Frec</h3>
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <div class="text-center mt-16">
+                    <button onclick="cerrarSesion()"
+                        class="text-slate-300 hover:text-red-500 text-[10px] font-bold tracking-[0.3em] transition-all uppercase">
+                        <i class="fa-solid fa-power-off mr-2"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-8 text-center text-slate-300 text-[10px] tracking-widest uppercase font-medium">
+        &copy; 2026 RENTAU S.A. - Gestión Residencial
+    </footer>
+
+    <script src="js/logout.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>

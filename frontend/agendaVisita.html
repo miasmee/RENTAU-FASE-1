@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Visita - RENTAU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-rentau-navy {
+            background-color: #002D5B;
+        }
+
+        .text-rentau-navy {
+            color: #002D5B;
+        }
+
+        .bg-rentau-gold {
+            background-color: #FFB800;
+        }
+
+        .text-rentau-gold {
+            color: #FFB800;
+        }
+
+        .time-slot {
+            transition: all 0.2s ease;
+            border: 2px solid #f1f5f9;
+        }
+
+        .time-slot:hover {
+            border-color: #FFB800;
+            background-color: #fffbeb;
+        }
+
+        .time-slot.active {
+            background-color: #002D5B;
+            border-color: #002D5B;
+            color: white !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 45, 91, 0.2);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="p-6 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <button onclick="window.history.back()"
+                    class="text-rentau-navy hover:text-rentau-gold transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xl"></i>
+                </button>
+                <h1 class="text-xl md:text-2xl font-bold text-rentau-navy">Agendar <span
+                        class="text-rentau-gold">Visita</span></h1>
+            </div>
+            <div class="text-rentau-navy font-black text-xl italic tracking-tighter">RENTU</div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl w-full mx-auto p-6 md:py-12">
+        <div class="bg-white rounded-[3rem] shadow-sm border border-slate-100 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-5">
+
+                <div class="lg:col-span-2 bg-rentau-navy p-10 text-white flex flex-col">
+                    <div class="mb-10">
+                        <div
+                            class="w-16 h-16 bg-rentau-gold rounded-2xl flex items-center justify-center text-rentau-navy text-3xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4">¡Ven a conocer tu próximo hogar!</h2>
+                        <p class="text-blue-100 text-sm leading-relaxed">
+                            Un asesor de RENTAU te esperará para mostrarte nuestras instalaciones, habitaciones
+                            disponibles y áreas comunes.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h3 class="text-xs font-bold text-rentau-gold uppercase tracking-[0.2em] mb-4">Reglas de
+                            Agendado</h3>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-briefcase text-rentau-gold text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold">Días Hábiles</p>
+                                <p class="text-[11px] text-blue-200">Visitas disponibles únicamente de Lunes a Viernes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock text-rentau-gold text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold">Horarios de Atención</p>
+                                <p class="text-[11px] text-blue-200">Bloques de cita: 7am, 9am, 11am, 1pm y 4pm.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-rentau-gold text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold">Ubicación</p>
+                                <p class="text-[11px] text-blue-200">Zacatepec, Morelos (Cerca del ITZ).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-10 border-t border-white/10">
+                        <p class="text-[10px] uppercase tracking-widest text-blue-300 font-bold mb-1">Contacto Directo
+                        </p>
+                        <p class="text-xs font-medium">WhatsApp: 734 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 p-10 md:p-12">
+                    <form id="visita-form" class="space-y-6">
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Nombre
+                                Completo (MAYÚSCULAS)</label>
+                            <input type="text" id="nombre" required placeholder="JUAN PÉREZ"
+                                class="w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 text-sm focus:border-rentau-gold focus:ring-4 focus:ring-amber-50 outline-none transition-all uppercase"
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÑ\s]/g, '')">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Número de
+                                Contacto</label>
+                            <input type="tel" id="contacto" required placeholder="7340000000" maxlength="10"
+                                class="w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 text-sm focus:border-rentau-gold focus:ring-4 focus:ring-amber-50 outline-none transition-all"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Fecha de
+                                la Cita</label>
+                            <input type="date" id="fecha" required
+                                class="w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 text-sm focus:border-rentau-gold outline-none">
+                            <p id="error-fecha" class="text-[10px] text-red-500 font-bold hidden mt-1">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Por favor selecciona un día de Lunes a
+                                Viernes.
+                            </p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-1">Horarios
+                                Disponibles</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <button type="button"
+                                    class="time-slot p-3 rounded-xl text-[10px] font-bold text-slate-500 bg-white"
+                                    onclick="selectTime(this, '7:00 AM')">07:00 AM</button>
+                                <button type="button"
+                                    class="time-slot p-3 rounded-xl text-[10px] font-bold text-slate-500 bg-white"
+                                    onclick="selectTime(this, '9:00 AM')">09:00 AM</button>
+                                <button type="button"
+                                    class="time-slot p-3 rounded-xl text-[10px] font-bold text-slate-500 bg-white"
+                                    onclick="selectTime(this, '11:00 AM')">11:00 AM</button>
+                                <button type="button"
+                                    class="time-slot p-3 rounded-xl text-[10px] font-bold text-slate-500 bg-white"
+                                    onclick="selectTime(this, '1:00 PM')">01:00 PM</button>
+                                <button type="button"
+                                    class="time-slot p-3 rounded-xl text-[10px] font-bold text-slate-500 bg-white"
+                                    onclick="selectTime(this, '4:00 PM')">04:00 PM</button>
+                            </div>
+                            <input type="hidden" id="selected-time" required>
+                        </div>
+
+                        <div class="pt-6 flex flex-col gap-3">
+                            <button type="submit"
+                                class="w-full bg-rentau-navy text-white font-bold py-5 rounded-2xl hover:bg-rentau-gold hover:text-rentau-navy transition-all shadow-lg text-xs uppercase tracking-[0.2em]">
+                                Confirmar
+                            </button>
+
+                            <button type="button"
+                                class="w-full bg-slate-200 text-slate-600 font-bold py-4 rounded-2xl hover:bg-slate-300 transition-all text-xs uppercase tracking-[0.2em]"
+                                onclick="window.location.href='index.html'">
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="confirm-modal"
+            class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-[2.5rem] max-w-sm w-full p-8 shadow-2xl text-center transform transition-all">
+                <div
+                    class="w-16 h-16 bg-amber-50 text-rentau-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-circle-check text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-rentau-navy mb-2">¡Cita Agendada!</h3>
+                <p class="text-slate-500 text-sm mb-8">Tu cita ha sido registrada. ¿Deseas descargar tu comprobante de
+                    visita?</p>
+
+                <div class="space-y-3">
+                    <button id="download-btn"
+                        class="w-full bg-rentau-navy text-white font-bold py-4 rounded-2xl hover:bg-rentau-gold hover:text-rentau-navy transition-all text-xs uppercase tracking-widest">
+                        <i class="fa-solid fa-file-arrow-down mr-2"></i> Descargar Comprobante
+                    </button>
+                    <button onclick="window.location.href='index.html'"
+                        class="w-full text-slate-400 font-bold py-2 text-[10px] uppercase hover:text-slate-600 transition-colors">
+                        No, continuar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./js/agenda.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+
+</html>
