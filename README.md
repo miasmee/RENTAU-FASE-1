@@ -6,7 +6,7 @@ Actualmente, el repositorio refleja la **Fase 1** del desarrollo, con una arquit
 
 ---
 
-## Características principales
+## Características principales
 
 * **Autenticación de usuarios:** Inicio de sesión con redirección por roles (Administrador/Inquilino).
 * **Gestión de Agenda:** Visualización y control de citas de visitas.
